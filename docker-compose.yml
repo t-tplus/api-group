@@ -1,0 +1,23 @@
+version: "3"
+services:
+  t-tplus:
+    image: nodejs
+    container_name: tplus
+    restart: unless-stopped
+    build: .
+    ports:
+      - "6622:6622"
+    volumes:
+      - .:/usr/app
+      - /usr/app/node_modules
+    networks:
+      - deploy-network
+    command: npm start
+
+networks:
+  deploy-network:
+    driver: bridge
+
+volumes:
+  node_modules:
+
