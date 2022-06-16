@@ -44,7 +44,7 @@ var funct = {
     },
     getScoreByAuth: (req, res) => {
         var mysort = { createdAt: -1 };
-        score.find({admin:req.user._id})
+        score.find({ admin: req.user._id })
             .sort(mysort)
             .select('-__v')
             .populate([{ path: 'admin', select: "-__v" }, { path: 'user', select: "-__v" }])
@@ -58,7 +58,7 @@ var funct = {
     },
     getScoreByUser: (req, res) => {
         var mysort = { createdAt: -1 };
-        score.find({user:req.user._id})
+        score.find({ user: req.user._id })
             .sort(mysort)
             .select('-__v')
             .populate([{ path: 'admin', select: "-__v" }, { path: 'user', select: "-__v" }])

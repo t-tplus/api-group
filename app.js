@@ -34,7 +34,7 @@ app.use((req, res, next) => {
   var err = new Error(NOT_FOUND);
   res.statusCode = 404
   res.json({
-      error:err.message
+    error: err.message
   });
 });
 

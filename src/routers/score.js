@@ -1,5 +1,5 @@
 const express = require('express');
-const { createScore, getScores, getScore, deleteScore, updateScore,getScoreByAuth, getScoreByUser } = require('../controlers/score');
+const { createScore, getScores, getScore, deleteScore, updateScore, getScoreByAuth, getScoreByUser } = require('../controlers/score');
 const { checkAuthorized, adminMiddleware } = require('../middleware/index');
 const router = express.Router();
 //SIGNUP

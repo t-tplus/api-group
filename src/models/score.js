@@ -17,15 +17,15 @@ const scoreSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'auth',
     },
-    status:{
-        type:String,
+    status: {
+        type: String,
         enum: ['0', '1'],
     },
-    addDate:{
-        type:Date,
+    addDate: {
+        type: Date,
     },
-    endDate:{
-        type:Date,
+    endDate: {
+        type: Date,
     }
 
 },

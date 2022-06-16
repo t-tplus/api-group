@@ -11,12 +11,12 @@ const authSchema = new mongoose.Schema({
         required: true,
     },
 
-    role:{
+    role: {
         type: String,
         enum: ['admin', 'user'],
         required: true
     },
-    status:{
+    status: {
         type: String,
         enum: ['active', 'block'],
         required: true

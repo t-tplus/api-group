@@ -2,9 +2,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const admin = require('../models/auth');
 const { USER_NAME_ALREADY_REGISTERED, SOMETHING_WHEN_WRONG,
-     INVALID_USER_NAME_OR_PASSWORD, SUCCESSFULLY, } = require('../constant/index');
-
-
+    INVALID_USER_NAME_OR_PASSWORD, SUCCESSFULLY, } = require('../constant/index');
 const generateJwtToken = (_id, role) => {
     return jwt.sign({ _id, role }, process.env.JWT_SECRET, {
         expiresIn: "1d",
@@ -18,11 +16,11 @@ var funct = {
                 return res.status(401).json({
                     error: USER_NAME_ALREADY_REGISTERED,
                 });
-            const { userName, password, status,role } = req.body;
+            const { userName, password, status, role } = req.body;
             if (!password)
-            return res.status(500).json({
-                error: SOMETHING_WHEN_WRONG,
-            });
+                return res.status(500).json({
+                    error: SOMETHING_WHEN_WRONG,
+                });
             const hash_password = await bcrypt.hash(password, 10);
             const _admin = new admin({
                 userName,
@@ -64,7 +62,7 @@ var funct = {
                         token,
                         result: _adm,
                     });
-                }else {
+                } else {
                     return res.status(401).json({
                         message: INVALID_USER_NAME_OR_PASSWORD,
                     });

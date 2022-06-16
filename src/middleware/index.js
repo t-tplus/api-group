@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
-const { AUTHORIZATION_REQUIRED, ADMIN_ALL_ACCESS_DENIED, 
-    SUCCESSFULLY, AUTHORIZATION_EXPIRE } = require("../constant/index");
+const { AUTHORIZATION_REQUIRED, ADMIN_ALL_ACCESS_DENIED,
+  SUCCESSFULLY, AUTHORIZATION_EXPIRE } = require("../constant/index");
 
 exports.checkToken = (req, res) => {
   if (req.headers.authorization) {
@@ -44,7 +44,7 @@ exports.checkAuthorized = (req, res, next) => {
 };
 
 exports.adminMiddleware = (req, res, next) => {
-  if (req.user.role !== "admin" ) {
+  if (req.user.role !== "admin") {
     return res.status(400).json({ message: ADMIN_ALL_ACCESS_DENIED });
   }
   next();
