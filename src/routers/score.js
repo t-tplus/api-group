@@ -15,7 +15,7 @@ router.get('/:scoreId', getScore);
 router.get('/by/auth/', checkAuthorized, getScoreByAuth);
 
 //GET
-router.get('/by/auth/', checkAuthorized, getScoreByUser);
+router.get('/by/user/', checkAuthorized, getScoreByUser);
 
 //Update
 router.put('/:scoreId', checkAuthorized, updateScore);
