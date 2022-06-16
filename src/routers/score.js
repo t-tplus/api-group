@@ -1,5 +1,5 @@
 const express = require('express');
-const { createScore, getScores, getScore, deleteScore, updateScore, } = require('../controlers/score');
+const { createScore, getScores, getScore, deleteScore, updateScore,getScoreByAuth } = require('../controlers/score');
 const { checkAuthorized, adminMiddleware } = require('../middleware/index');
 const router = express.Router();
 //SIGNUP
@@ -10,6 +10,9 @@ router.get('/', getScores);
 
 //GET
 router.get('/:scoreId', getScore);
+
+//GET
+router.get('/by/auth/', checkAuthorized, getScoreByAuth);
 
 //Update
 router.put('/:scoreId', checkAuthorized, updateScore);

@@ -42,6 +42,20 @@ var funct = {
                 else { return res.status(500).json({ error: SOMETHING_WHEN_WRONG }); }
             });
     },
+    getScoreByAuth: (req, res) => {
+        var mysort = { createdAt: -1 };
+        score.find({admin:req.user._id})
+            .sort(mysort)
+            .select('-__v')
+            .populate([{ path: 'admin', select: "-__v" }, { path: 'user', select: "-__v" }])
+            .exec((error, results) => {
+                if (error) return res.status(500).json({ error: SOMETHING_WHEN_WRONG });
+                if (results) {
+                    res.status(201).json(results);
+                }
+                else { return res.status(500).json({ error: SOMETHING_WHEN_WRONG }); }
+            });
+    },
     getScore: (req, res) => {
         score.findOne({ _id: req.params.scoreId })
             .select('-__v')
